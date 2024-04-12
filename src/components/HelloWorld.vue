@@ -1,44 +1,20 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
+<script setup lang="ts">
+import "vue3-select-component/dist/style.css";
+
+import { ref } from "vue";
+import VueSelect from "vue3-select-component";
+
+const selected = ref<string | null>(null);
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
-  </div>
+  <VueSelect
+    v-model="selected"
+    :options="[
+      { label: 'Option #1', value: 'option_1' },
+      { label: 'Option #2', value: 'option_2' },
+      { label: 'Option #3', value: 'option_3' },
+    ]"
+    placeholder="Select an option"
+  />
 </template>
-
-<style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
-</style>
